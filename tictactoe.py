@@ -22,12 +22,12 @@ def player_input():
         print()
     # assign player 2 with the opposite marker
     player1 = marker.upper()
-    
+
     if player1 == 'X':
         player2 = 'O'
     else:
         player2 = 'X'
-    
+
     return(player1, player2)
 
 
@@ -36,19 +36,19 @@ def place_marker(board, marker, position):
 
 def win_check(board, mark):
     return ((mark == board[1] == board[2] == board[3]) or
-    (mark == board[4] and mark == board[5] and mark == board[6]) or
-    (mark == board[7] and mark == board[8] and mark == board[9]) or
-    (mark == board[1] and mark == board[4] and mark == board[7]) or
-    (mark == board[2] and mark == board[5] and mark == board[8]) or
-    (mark == board[3] and mark == board[6] and mark == board[9]) or
-    (mark == board[1] and mark == board[5] and mark == board[9]) or
-    (mark == board[3] and mark == board[5] and mark == board[7]))
+            (mark == board[4] and mark == board[5] and mark == board[6]) or
+            (mark == board[7] and mark == board[8] and mark == board[9]) or
+            (mark == board[1] and mark == board[4] and mark == board[7]) or
+            (mark == board[2] and mark == board[5] and mark == board[8]) or
+            (mark == board[3] and mark == board[6] and mark == board[9]) or
+            (mark == board[1] and mark == board[5] and mark == board[9]) or
+            (mark == board[3] and mark == board[5] and mark == board[7]))
 
 
 import random
 
 def choose_first():
-    selector = random.randint(0,1)
+    selector = random.randint(0, 1)
     if selector == 0:
         return 'player1'
     else:
@@ -73,7 +73,7 @@ def player_choice(board):
         pos = input('please enter your position from [1 to 9]: ')
         print()
 
-        if pos not in ['1','2','3','4','5','6','7','8','9']:
+        if pos not in ['1', '2', '3', '4', '5', '6', '7', '8', '9']:
             print('please enter valid number between [1 to 9]')
         else:
             if not space_check(board, int(pos)):
@@ -92,7 +92,7 @@ def replay():
         if play_again.lower() != 'yes' and play_again.lower() != 'no':
             print('please enter either YES or NO')
         else:
-            check = False 
+            check = False
     return play_again.lower() == 'yes'
 
 
@@ -100,7 +100,7 @@ print('Welcome to Tic Tac Toe!')
 print()
 
 while True:
-    
+
     board = [' '] * 10
     player1_marker, player2_marker = player_input()
     turn = choose_first()
@@ -118,9 +118,9 @@ while True:
 
     if start_game.lower() == 'yes':
         game_on = True
-    else: 
+    else:
         game_on = False
-        
+
     while game_on:
         if turn == 'player1':
             print()
@@ -130,7 +130,7 @@ while True:
             print()
             choice = player_choice(board)
             place_marker(board, player1_marker, choice)
-            
+
             if win_check(board, player1_marker):
                 print()
                 display_board(board)
@@ -154,7 +154,7 @@ while True:
             print()
             choice = player_choice(board)
             place_marker(board, player2_marker, choice)
-            
+
             if win_check(board, player2_marker):
                 print()
                 display_board(board)
@@ -170,6 +170,6 @@ while True:
                     break
                 else:
                     turn = 'player1'
-    
+
     if not replay():
         break
