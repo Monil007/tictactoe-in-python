@@ -4,7 +4,7 @@ __author__ = "Monil Kaneria"
 __version__ = "1.0.0"
 __init_Publish_date__ = "03/17/2020"
 
-
+####
 def display_board(board):
     print(board[7] + ' | ' + board[8] + ' | ' + board[9])
     print('--|---|--' + '    player 1 is {}'.format(player1_marker))
